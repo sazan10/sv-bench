@@ -1,0 +1,19 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    paths:
+      - '**/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Pull Docker image
+        run: docker pull registry.gitlab.com/sosy-lab/software/sv-benchmarks/ci/clang:3.9
+
+      - name: Run Docker command
+        run: docker run --privileged --tty --volume "${{ github.workspace }}:${{ github.workspace }}" registry.gitlab.com/sosy-lab/software/sv-benchmarks/ci/clang:3.9 /bin/sh -c "cd ${{ github.workspace }}; clang-3.9 -v --version; cd c; ./diff_ci.sh 'make -j2 CC=clang-3.9 -C'"
