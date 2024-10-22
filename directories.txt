@@ -1,1 +1,1 @@
-./hardness-nfm22/
+./combinations/
