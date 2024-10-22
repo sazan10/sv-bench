@@ -29,10 +29,10 @@ jobs:
           set +e
           git clone https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks.git
           cd sv-benchmarks/c
-          mkdir -p msan_logs
+          mkdir -p asan_logs
           DIR_FILE="../../directories.txt"
           CC="clang"
-          CFLAGS="-fsanitize=memory -fPIE -fPIC -g -O2"
+          CFLAGS="-fsanitize=address -fPIE -fPIC -g -O2"
           OUTPUT_DIR="build"
           #find . -type f -name "*.c" | while read -r cfile; do
           #  filename=$(basename "$cfile" .c)
@@ -84,7 +84,7 @@ jobs:
           }
           run_with_asan() {
             local executable="$1"
-            MSAN_OPTIONS="exitcode=1 verbosity=1 halt_on_error=1 print_stats=1 log_path=./msan_logs/$(dirname "$file" )/$(basename "$executable")/$i.txt" timeout 10s "$executable"
+            ASAN_OPTIONS="exitcode=1 verbosity=1 halt_on_error=1 print_stats=1 log_path=./asan_logs/$(dirname "$file" )/$(basename "$executable")/$i.txt" timeout 10s "$executable"
             local exit_status=$?
           }
           find . -type f -executable | while read -r file; do
@@ -99,4 +99,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tsan-report
-          path: './sv-benchmarks/c/msan_logs/*'
+          path: './sv-benchmarks/c/asan_logs/*'
