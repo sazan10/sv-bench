@@ -2,6 +2,7 @@ name: sv-directories1-asan
 
 on:
   push:
+  
 jobs:
   run-asan:
     name: '${{ matrix.os }}'
