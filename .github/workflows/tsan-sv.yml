@@ -1,5 +1,4 @@
 name: sv-directories1-tsan
-
 on:
   push:
 jobs:
