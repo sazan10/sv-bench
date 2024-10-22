@@ -1,4 +1,4 @@
-name: sv-directories1
+name: sv-directories1-asan
 
 on:
   push:
