@@ -29,7 +29,7 @@ jobs:
           git clone https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks.git
           cd sv-benchmarks/c
           mkdir -p msan_logs
-          DIR_FILE="../../directories.txt"
+          DIR_FILE="../../directories_1.txt"
           CC="clang"
           CFLAGS="-fsanitize=memory -fPIE -fPIC -g -O2"
           OUTPUT_DIR="build"
