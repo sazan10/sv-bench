@@ -71,7 +71,7 @@ jobs:
             local basename=$(basename "$executable")
             mkdir -p ./drmem_logs/$dirname/$basename/
             echo "dirname: $dirname, basename: $basename, $executable"
-            timeout 30s /tmp/DrMemory-Linux-2.6.0/bin64/drmemory -logdir "./drmem_logs/$dirname/$basename/" -- "$executable"
+            timeout 10s /tmp/DrMemory-Linux-2.6.0/bin64/drmemory -logdir "./drmem_logs/$dirname/$basename/" -- "$executable"
             local exit_status=$?
           }
           find . -type f -executable | while read -r file; do
