@@ -1,1 +1,1 @@
- ./float-newlib/ ./goblint-coreutils/ ./goblint-regression/ ./hardware-verification-array/  ./heap-data/ ./heap-manipulation/ 
+ ./float-newlib/ ./goblint-coreutils/ ./hardware-verification-array/  ./heap-data/ ./heap-manipulation/ 
