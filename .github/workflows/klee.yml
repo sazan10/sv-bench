@@ -83,7 +83,8 @@ jobs:
                   rm "$bc_file"
                 else
                   output_file="klee_reports/$(basename "$file" .c)_klee_report.txt"
-                  klee_output=$(/tmp/klee/build/bin/klee "$bc_file" 2>&1 | tee -a "$output_file")
+                  # klee_output=$(/tmp/klee/build/bin/klee "$bc_file" 2>&1 | tee -a "$output_file")
+                  klee_output=$(/tmp/klee/build/bin/klee "$bc_file" )
                   klee_exit_code=$?
                   if [[ $klee_exit_code -eq 0 ]]; then
                     /tmp/klee/build/bin/klee "$bc_file"
