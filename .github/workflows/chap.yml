@@ -16,9 +16,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2 
 
-      - name: Build repository 
-        run: make
-      
+
       - name: Install Chap dependencies
         run: |
           sudo apt-get update
