@@ -59,11 +59,11 @@ jobs:
       - name: Run Klee Analyzer
         run: |
           #!/bin/bash
-          cd sv-benchmarks/c
-          mkdir -p klee_reports
           set +e 
-          
+          cd sv-benchmarks/c
+          mkdir -p klee_reports          
           include_dirs=$(find . -name '*.h' -exec dirname {} + | sort -u | sed 's/^/-I /')
+          ls -l
           DIR_FILE="../../directories-test.txt"
           read -r -a dirs < "$DIR_FILE"
           for dir in "${dirs[@]}"; do
