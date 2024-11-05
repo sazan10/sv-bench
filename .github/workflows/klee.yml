@@ -12,7 +12,9 @@ jobs:
         os: [ubuntu-22.04]
 
     steps:
-      
+      - name: Check out repository
+        uses: actions/checkout@v2 
+     
       - name: Install Klee and STP dependencies
         run: |
           pwd
