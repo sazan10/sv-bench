@@ -81,6 +81,7 @@ jobs:
                 if ! /usr/lib/llvm-13/bin/llvm-nm "$PWD/$bc_file" | grep -q " T main"; then
                   rm "$bc_file"
                 else
+                  ls -l "$bc_file"
                   output_file="klee_reports/$(basename "$file" .c)_klee_report.txt"
                   # klee_output=$(/tmp/klee/build/bin/klee "$bc_file" 2>&1 | tee -a "$output_file")
                   klee_output=$(/tmp/klee/build/bin/klee "$bc_file" )
