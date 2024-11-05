@@ -1,0 +1,1 @@
+./array-cav19/ ./array-crafted/ ./array-examples/ ./array-fpi/ ./array-industry-pattern/ ./array-lopstr16/ 
