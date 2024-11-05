@@ -74,7 +74,11 @@ jobs:
           for dir in "${dirs[@]}"; do
             while IFS= read -r -d '' file; do
               bc_file="${file%.c}.bc"
+              echo "Before compilation:"
+              ls -l
               if clang -I "$include_dirs" -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone "$file" -o "$bc_file" 2>/dev/null; then
+                echo "After compilation:"
+                ls -l
                 if ! /usr/lib/llvm-13/bin/llvm-nm "$PWD/$bc_file" | grep -q " T main"; then
                   rm "$bc_file"
                 else
