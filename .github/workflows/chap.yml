@@ -98,7 +98,9 @@ jobs:
           
           commands=("count" "describe" "dump" "enumerate" "explain" "list" "show" "summarize")
           sub_commands=("allocations" "anchored" "anchorpoints" "externalanchored" "externalanchorpoints" "free" "inaccessible" "leaked" "readonly" "registeranchored" "registeranchorpoints" "rxonly" "stackanchorpoints")
+          echo "Before file list"
           ls -l /var/lib/apport/coredump/
+          echo "After file list"
           for core_file in /var/lib/apport/coredump/*; do
               if [ -f "$core_file" ]; then
                   output_file="./chap_results/${core_file##*/}.txt"
