@@ -110,9 +110,9 @@ jobs:
                             echo "checking directories"
                             echo $core_file
                             echo $output_file
-          #                 /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
-          # $command $sub_command
-          # EOF
+                            /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
+                            $command $sub_command
+                            EOF
                       done
                   done
               fi
