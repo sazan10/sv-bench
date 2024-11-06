@@ -88,11 +88,9 @@ jobs:
           }
           find . -type f -executable | while read -r file; do
             if is_executable "$file"; then
-              for i in {1..2}; do
-                echo "Executing $file: Iteration No: $i"
+                echo "Executing $file:"
                 run_exe "$file" $i
-              done
-                fi
+            fi
           done
           
           commands=("count" "describe" "dump" "enumerate" "explain" "list" "show" "summarize")
