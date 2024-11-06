@@ -113,9 +113,10 @@ jobs:
                   done
               fi
           done
+          ls -l
           
       - name: Upload Chap reports
         uses: actions/upload-artifact@v4
         with:
           name: chap-report-${{ github.event.repository.name}}-on-${{ matrix.os }}-from_branch_${{ github.ref_name }}
-          path: './chap_results/*'
+          path: './benchmarks/c/chap_results/*'
