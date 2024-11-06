@@ -98,7 +98,7 @@ jobs:
           
           commands=("count" "describe" "dump" "enumerate" "explain" "list" "show" "summarize")
           sub_commands=("allocations" "anchored" "anchorpoints" "externalanchored" "externalanchorpoints" "free" "inaccessible" "leaked" "readonly" "registeranchored" "registeranchorpoints" "rxonly" "stackanchorpoints")
-          
+          ls -l /var/lib/apport/coredump/
           for core_file in /var/lib/apport/coredump/*; do
               if [ -f "$core_file" ]; then
                   output_file="./chap_results/${core_file##*/}.txt"
@@ -110,7 +110,7 @@ jobs:
                             echo $output_file
           #                 /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
           # $command $sub_command
-          EOF
+          # EOF
                       done
                   done
               fi
