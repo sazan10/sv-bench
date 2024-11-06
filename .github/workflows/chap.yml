@@ -105,7 +105,8 @@ jobs:
                   for command in "${commands[@]}"; do
                       for sub_command in "${sub_commands[@]}"; do
                           /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
-          $command $sub_command
+                          echo "should have executed $output_file" 
+                          $command $sub_command
           EOF
                       done
                   done
