@@ -85,7 +85,7 @@ jobs:
           run_exe() {
             local executable="$1"
             "$executable"
-            local exit_status=$?
+            # local exit_status=$?
           }
           find . -type f -executable | while read -r file; do
             if is_executable "$file"; then
