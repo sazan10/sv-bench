@@ -104,7 +104,7 @@ jobs:
           for core_file in /var/lib/apport/coredump/*; do
               if [ -f "$core_file" ]; then
                   output_file="./chap_results/${core_file##*/}.txt"
-                  
+                  echo "running klee with $core_file"
                   for command in "${commands[@]}"; do
                       for sub_command in "${sub_commands[@]}"; do
                             echo "checking directories"
