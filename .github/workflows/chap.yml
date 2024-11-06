@@ -33,13 +33,12 @@ jobs:
       - name: Run VMware Chap Analyzer
         run: |
           set +e
-          mkdir -p chap_results
           directory="$GITHUB_WORKSPACE"
           ulimit -c unlimited
 
           git clone https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks.git
           cd sv-benchmarks/c
-          mkdir -p msan_logs
+          mkdir -p chap_results
           DIR_FILE="../../directories-test.txt"
           CC="clang"
           CFLAGS="-fPIE -fPIC -g -O2"
