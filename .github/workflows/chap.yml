@@ -112,6 +112,7 @@ jobs:
                   done
               fi
           done
+          ls -l ./chap_results
 
           
       - name: Upload Chap reports
