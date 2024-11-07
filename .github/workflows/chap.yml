@@ -100,16 +100,19 @@ jobs:
           echo "After file list"
           for core_file in /var/lib/apport/coredump/*; do
               if [ -f "$core_file" ]; then
-                  output_file="./chap_results/${core_file##*/}.txt"
-                  
-                  for command in "${commands[@]}"; do
+                
+                  output_file="./chap_results/${core_file##*/}"
+                  mkdir -p "$output_file"
+                  for i in {1..2}; do
+                    for command in "${commands[@]}"; do
                       for sub_command in "${sub_commands[@]}"; do
-                          /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
+                          /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file/$i.txt" 2>/dev/null
                           echo "should have executed $output_file" 
                           $command $sub_command
           EOF
                       done
-                  done
+                    done
+                  d9he
               fi
           done
           ls -l ./chap_results
