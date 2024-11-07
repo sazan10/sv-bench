@@ -121,4 +121,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chap-report
-          path: './benchmarks/c/chap_results/*'
+          path: './sv-benchmarks/c/chap_results/*'
