@@ -113,6 +113,8 @@ jobs:
               fi
           done
           ls -l ./chap_results
+          echo "Current dire"
+          pwd
 
           
       - name: Upload Chap reports
