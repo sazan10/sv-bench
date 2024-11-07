@@ -98,35 +98,24 @@ jobs:
           echo "Before file list"
           ls -l /var/lib/apport/coredump/
           echo "After file list"
-          # for core_file in /var/lib/apport/coredump/*; do
-          #     if [ -f "$core_file" ]; then
-          #         output_file="./chap_results/${core_file##*/}.txt"
-                  
-          #         for command in "${commands[@]}"; do
-          #             for sub_command in "${sub_commands[@]}"; do
-          #                 /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
-          #                 echo "should have executed $output_file" 
-          #                 $command $sub_command
-          # EOF
-          #             done
-          #         done
-          #     fi
-          # done
           for core_file in /var/lib/apport/coredump/*; do
               if [ -f "$core_file" ]; then
+                  output_file="./chap_results/${core_file##*/}.txt"
+                  
                   for command in "${commands[@]}"; do
                       for sub_command in "${sub_commands[@]}"; do
-                          echo "$command + $sub_command"
-                          /tmp/chap/build-chap/chap "$core_file" <<EOF >> "./chap_results/1.txt" 2>/dev/null
+                          /tmp/chap/build-chap/chap "$core_file" <<EOF >>"$output_file" 2>/dev/null
+                          echo "should have executed $output_file" 
                           $command $sub_command
           EOF
                       done
                   done
               fi
           done
+
           
       - name: Upload Chap reports
         uses: actions/upload-artifact@v4
         with:
-          name: chap-report-${{ github.event.repository.name}}-on-${{ matrix.os }}-from_branch_${{ github.ref_name }}
+          name: chap-report
           path: './benchmarks/c/chap_results/*'
